@@ -1,0 +1,38 @@
+.InputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 20vh;
+}
+.InputBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 7vh;
+  width: 50vw;
+}
+.InputBox input {
+  outline: none;
+  height: inherit;
+  width: inherit;
+  font-size: 17px;
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+.InputBox button {
+  width: 10vw;
+  border: none;
+  min-height: 7.3vh;
+  font-size: 16px;
+  transition: ease-in 0.2s;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: rgb(230, 226, 240);
+}
+.InputBox button:hover {
+  cursor: pointer;
+  background-color: rgb(196, 192, 206);
+}

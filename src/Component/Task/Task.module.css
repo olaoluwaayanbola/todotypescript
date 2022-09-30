@@ -1,0 +1,38 @@
+.TaskContianer {
+  display: flex;
+  padding: 20px;
+  font-size: 22px;
+  min-height: 5vh;
+  margin-top: 20px;
+  border-radius: 5px;
+  color: whitesmoke;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(19, 8, 79);
+}
+.Value {
+  flex: 4 0 60%;
+}
+.Function {
+  flex: 1 0 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.Function input {
+  height: 20px;
+  width: 20px;
+}
+.Function button {
+  transition: ease-in 0.2s;
+  border-radius: 5px;
+  background-color: rgb(230, 226, 240);
+  font-size: 16px;
+  height: 35px;
+  width: 70px;
+  border: none;
+}
+.Function button:hover {
+  cursor: pointer;
+  background-color: rgb(196, 192, 206);
+}

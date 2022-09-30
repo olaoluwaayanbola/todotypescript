@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useContext } from 'react';
+import { InputContex } from './Context';
+import { Input } from './Component/Input/Input';
+import { Task } from './Component/Task/Task';
+import AppStyle from './App.module.css';
 function App() {
+  const val = useContext(InputContex)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={AppStyle.App}>
+      <div className={AppStyle.AppContainer}>
+        <div className={AppStyle.Input}>
+          <Input
+            input={val.input}
+            Tasks={val.Tasks}
+            setTasks={val.setTasks}
+            handleChange={val.handleChange}
+          />
+        </div>
+        <div className={AppStyle.Task}>
+          {
+            val.filtter.map((items: any) => {
+              return (
+                <Task
+                  key={items.id}
+                  items={items}
+                  setRemove={val.setRemove}
+                  filter={val.filtered}
+                />
+              )
+            })
+          }
+        </div>
+      </div>
     </div>
   );
 }
