@@ -22,7 +22,7 @@ export const Task = ({ items, setRemove, filter }: Props) => {
     setEdit(event.currentTarget.value)
   }
   const handleUpdate = () => {
-    setInputs(edit)
+    
   }
   console.log(inputsetState.input)
   return (

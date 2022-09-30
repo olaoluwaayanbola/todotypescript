@@ -6,6 +6,7 @@ interface Props {
 }
 
 export const InputContex: React.Context<any> = createContext({})
+
 export const InputProvider = ({ children }: Props) => {
     const [input, setInputs] = useState<any>("")
     const [Tasks, setTasks] = useState<any[]>([])
@@ -25,7 +26,7 @@ export const InputProvider = ({ children }: Props) => {
     const filtter = Tasks.filter((item: any) => {
         return item.id !== remove
     })
-    
+
     return (
         <InputContex.Provider value={
             {

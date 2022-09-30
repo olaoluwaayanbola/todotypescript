@@ -1,20 +1,19 @@
 .App {
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
 .AppContainer {
   width: 70%;
-
 }
 .Input {
-  border-radius: 5px;
-  background-color: black;
   width: 100%;
   height: 20vh;
+  border-radius: 5px;
+  background-color: black;
 }
 .Task {
- width:100%;
-height: 70vh;
+  width: 100%;
+  height: 70vh;
 }
