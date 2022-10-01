@@ -28,12 +28,16 @@ export const Task = ({ items, setRemove, filter }: Props) => {
   return (
     <div className={TaskStyle.TaskContianer}>
       <div className={TaskStyle.Value}>
-        {checked ?
-          <s>{edit}</s>
-          : checked ?
+        {
+          checked ? <s>{edit}</s> : checked ?
             <span>{inputsetState.input}</span> : <span>{edit}</span>
         }
-        {update ? <input type="text" value={edit} onChange={handleEdit} /> : null}
+        {
+          update &&
+          <div className="ModalClass">
+            <input type="text" value={edit} onChange={handleEdit} />
+          </div>
+        }
       </div>
       <div className={TaskStyle.Function}>
         <div className={TaskStyle.Check}>
