@@ -1,16 +1,16 @@
 .InputContainer {
+  width: 100%;
   display: flex;
+  min-height: 20vh;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  min-height: 20vh;
 }
 .InputBox {
+  width: 50vw;
+  height: 8vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 7vh;
-  width: 50vw;
 }
 .InputBox input {
   outline: none;
@@ -18,15 +18,15 @@
   width: inherit;
   font-size: 17px;
   padding: 0 10px;
+  border-top-left-radius: 5px;
   border: 1px solid transparent;
   border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
 }
 .InputBox button {
   width: 10vw;
   border: none;
   font-size: 16px;
-  min-height: 7.3vh;
+  min-height: 8.3vh;
   transition: ease-in 0.2s;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
