@@ -29,7 +29,7 @@ export const Task = ({ items, setRemove, filter }: Props) => {
     <div className={TaskStyle.TaskContianer}>
       <div className={TaskStyle.Value}>
         {checked ?
-          <s>{items.input}</s>
+          <s>{edit}</s>
           : checked ?
             <span>{inputsetState.input}</span> : <span>{edit}</span>
         }
@@ -37,11 +37,11 @@ export const Task = ({ items, setRemove, filter }: Props) => {
       </div>
       <div className={TaskStyle.Function}>
         <div className={TaskStyle.Check}>
-          {/* <input
+          <input
             type="checkbox"
             checked={checked}
             onChange={handleChecked}
-          /> */}
+          />
         </div>
         <div className={TaskStyle.Delete}>
           <button onClick={handleRemove}>
