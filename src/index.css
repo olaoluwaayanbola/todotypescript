@@ -1,10 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
-  background: #0022ff;
-  background: linear-gradient(90deg, #475ad4 0%, #f1eaea 80%);
+  height: 100vh;
+  background: #8f96c5;
+  /* background: linear-gradient(90deg, #475ad4 0%, #f1eaea 80%);
   background: -webkit-linear-gradient(90deg, #475ad4 0%, #f1eaea 80%);
-  background: -moz-linear-gradient(90deg, #475ad4 0%, #f1eaea 80%);
+  background: -moz-linear-gradient(90deg, #475ad4 0%, #f1eaea 80%); */
 }
