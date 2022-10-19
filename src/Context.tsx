@@ -1,32 +1,64 @@
-import React from 'react'
-import { createContext, useState } from 'react'
-
+import React, { useRef } from 'react'
+import { app } from "../src/Firebase/Firebase"
+import { createContext, useState, useEffect } from 'react'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth } from "firebase/auth";
 interface Props {
     children: React.ReactNode
+}
+interface handleForm {
+    Name: string;
+    Password: string;
 }
 
 export const InputContex: React.Context<any> = createContext({})
 
+// --->Handles localStorage without Firebase
+// const localdata = (): any => {
+//     const data: any = JSON.parse(localStorage.getItem("items") || " ")
+//     return data
+// }
 export const InputProvider = ({ children }: Props) => {
+    const auth = getAuth(app);
     const [input, setInputs] = useState<any>("")
     const [Tasks, setTasks] = useState<any[]>([])
-    const [remove, setRemove] = useState("")
-
+    const [deleted, setDelete] = useState<[]>()
+    const [handleForm, setHandleForm] = useState<handleForm>({
+        Name: "",
+        Password: ""
+    })
     const handleChange = (event: React.FormEvent<HTMLInputElement>): void => {
         setInputs(event.currentTarget.value)
     }
-    const index = Tasks.findIndex((object: any) => {
-        return object.id === remove;
-    });
-    const filtered = () => {
-        if (index !== -1) {
-            Tasks.splice(index, 1)
-        }
+    const HandleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        createUserWithEmailAndPassword(auth, handleForm.Name, handleForm.Password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user)
+                // ...
+            })
+            .catch((error: any) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage)
+                // ..
+            });
+        signInWithEmailAndPassword(auth, handleForm.Name, handleForm.Password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
     }
-    const filtter = Tasks.filter((item: any) => {
-        return item.id !== remove
-    })
-
+    // --->Handles localStorage without Firebase
+    // useEffect(() => {
+    //     localStorage.setItem("items", JSON.stringify(Tasks))
+    // }, [Tasks])
     return (
         <InputContex.Provider value={
             {
@@ -34,11 +66,11 @@ export const InputProvider = ({ children }: Props) => {
                 setInputs,
                 Tasks,
                 setTasks,
+                setDelete,
                 handleChange,
-                remove,
-                setRemove,
-                filtered,
-                filtter
+                handleForm,
+                HandleSubmit,
+                setHandleForm
             }
         }>
             {children}
