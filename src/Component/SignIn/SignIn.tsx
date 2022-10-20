@@ -13,7 +13,7 @@ const SignIn = () => {
     }
     return (
         <div className={Signin.Container}>
-            {/* <form action="" onSubmit={HandleSubmit} className={Signin.FormContainer}>
+            <form action="" onSubmit={HandleSubmit} className={Signin.FormContainer}>
                 {
                     display ?
                         <div className={Signin.box1}>
@@ -61,8 +61,7 @@ const SignIn = () => {
                         </div>
                 }
                 <button className={Signin.Button} onClick={() => { setDisplay(false) }}>SignUp</button>
-                <button className={Signin.Button} onClick={() => { setDisplay(false) }}>SignIn</button> */}
-            {/* </form> */}
+            </form>
         </div>
     )
 }
