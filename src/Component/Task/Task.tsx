@@ -1,11 +1,13 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useContext, useState } from 'react';
 import { InputContex } from '../../Context';
 import TaskStyle from "./Task.module.css"
+
 interface Props {
   items: any,
   setRemove?: React.Dispatch<React.SetStateAction<any[]>>
   filter?: () => {}
 }
+
 export const Task = ({ items }: Props) => {
   const inputsetState = useContext(InputContex)
   const { setDelete } = inputsetState
@@ -21,7 +23,7 @@ export const Task = ({ items }: Props) => {
   return (
     <div className={TaskStyle.TaskContianer}>
       <div className={TaskStyle.Value}>
-        {checked ? <s>{edit}</s> : edit}
+        {checked ? <s> {edit} </s> : edit}
         {
           update &&
           <div className="ModalClass">
