@@ -1,7 +1,8 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { app } from "../src/Firebase/Firebase"
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState } from 'react'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth } from "firebase/auth";
+
 interface Props {
     children: React.ReactNode
 }
@@ -17,6 +18,7 @@ export const InputContex: React.Context<any> = createContext({})
 //     const data: any = JSON.parse(localStorage.getItem("items") || " ")
 //     return data
 // }
+
 export const InputProvider = ({ children }: Props) => {
     const auth = getAuth(app);
     const [input, setInputs] = useState<any>("")
