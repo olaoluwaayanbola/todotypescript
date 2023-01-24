@@ -8,15 +8,23 @@ interface Props {
     setTasks: React.Dispatch<React.SetStateAction<any[]>>,
 }
 
-export const Input = ({ input, setTasks,handleChange,setInputs}: Props) => {
-    const handlepush = (): void => {
-        if (!input) {
-            return;
-        } else {
-            setTasks(prev => [...prev, { input , id: shortid.generate() }])
-            setInputs("")
+export const Input = ({ 
+    input, 
+    setTasks,
+    handleChange,
+    setInputs}: Props) => {
+        const handlepush = (): void => {
+            if (!input) {
+                return;
+            } else {
+                setTasks(prev => [...prev, 
+                    {   input , 
+                        id: shortid.generate() 
+                    }
+                ])
+                setInputs("")
+            }
         }
-    }
     return (
         <div className={InputStyle.InputContainer}>
             <div className={InputStyle.InputBox}>
