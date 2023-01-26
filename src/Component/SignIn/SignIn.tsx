@@ -2,14 +2,18 @@ import React, { useRef, useState, useContext } from 'react'
 import { InputContex } from '../../Context';
 
 import Signin from "./SignIn.module.css"
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
+    
     const contextData = useContext(InputContex)
     const [display, setDisplay] = useState<boolean>(true)
     const { handleForm, setHandleForm, HandleSubmit } = contextData
 
     const HandleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        setHandleForm((prev: any) => ({ ...prev, [event.target.name]: event.target.value }))
+        setHandleForm((prev: any) => ({
+                ...prev, [event.target.name]: event.target.value 
+             }))
     }
     return (
         <div className={Signin.Container}>
@@ -60,7 +64,12 @@ const SignIn = () => {
                             </label>
                         </div>
                 }
-                <button className={Signin.Button} onClick={() => { setDisplay(false) }}>SignUp</button>
+                <button 
+                    className={Signin.Button} 
+                    onClick={() => { setDisplay(true) }}
+                >
+                    SignUp
+                </button>
             </form>
         </div>
     )

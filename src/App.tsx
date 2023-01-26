@@ -11,8 +11,8 @@ function App() {
   return (
     <div className={AppStyle.App}>
       <Routes>
-        <Route path='/signIn' element={<SignIn />} />
-        <Route path='/' element={
+        <Route path='/' element={<SignIn />} />
+        <Route path='/Home' element={
           <div className={AppStyle.AppContainer}>
             <div className={AppStyle.Input}>
               <Input

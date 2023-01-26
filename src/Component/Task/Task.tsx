@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react';
-import { InputContex } from '../../Context';
+import React, { useState } from 'react';
 import TaskStyle from "./Task.module.css"
 
 interface Props {
@@ -9,17 +8,13 @@ interface Props {
 }
 
 export const Task = ({ items }: Props) => {
-  const inputsetState = useContext(InputContex)
-  const { setDelete } = inputsetState
-  const [checked, setChecked] = useState(false)
-  const [update, setUpdate] = useState(false)
-  const [edit, setEdit] = useState(`${items.input}`)
-  const setToDelete = () => {
-    setDelete(items.id)
-  }
+  const [checked, setChecked] = useState<boolean>(false)
+  const [update, setUpdate] = useState<boolean>(false)
+  const [edit, setEdit] = useState<string>(`${items.input}`)
   const handleEdit = (event: React.FormEvent<HTMLInputElement>): void => {
     setEdit(event.currentTarget.value)
   }
+  console.log(items)
   return (
     <div className={TaskStyle.TaskContianer}>
       <div className={TaskStyle.Value}>
@@ -40,9 +35,9 @@ export const Task = ({ items }: Props) => {
           />
         </div>
         <div className={TaskStyle.Delete}>
-          <button onClick={setToDelete}>
+          {/* <button onClick={setToDelete}>
             Delete
-          </button>
+          </button> */}
         </div>
         <div className={TaskStyle.Update}>
           <button onClick={() => { setUpdate(prev => !prev) }} >
