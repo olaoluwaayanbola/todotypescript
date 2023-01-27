@@ -18,11 +18,6 @@ function App() {
     return arr
   }
 
-  // const filt:any = val.Tasks.filter((items:any) => {
-  //   if(items.id !== val.deleted ){
-  //     return items
-  //   }
-  // })
 
   return (
     <div className={AppStyle.App}>
