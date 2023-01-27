@@ -17,12 +17,13 @@ export const Input = ({
             if (!input) {
                 return;
             } else {
-                setTasks(prev => [...prev, 
-                    {   input , 
+                setTasks(prev => [
+                    ...prev, 
+                    {   input, 
                         id: shortid.generate() 
                     }
                 ])
-                setInputs("")
+                setInputs("");
             }
         }
     return (

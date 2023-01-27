@@ -5,13 +5,30 @@ import { Task } from './Component/Task/Task';
 import SignIn from './Component/SignIn/SignIn';
 import { Input } from './Component/Input/Input';
 import { Routes, Route } from "react-router-dom";
+
 function App() {
   const val = useContext(InputContex)
+  const newList = () => {
+    let arr = []
+    for(let i = 0;i < val.Tasks.length;i++){
+      if(val.Tasks[i].id !== val.deleted){
+        arr.push(val.Tasks[i])
+      }
+    }
+    return arr
+  }
+
+  // const filt:any = val.Tasks.filter((items:any) => {
+  //   if(items.id !== val.deleted ){
+  //     return items
+  //   }
+  // })
+
   return (
     <div className={AppStyle.App}>
       <Routes>
-        <Route path='/signIn' element={<SignIn />} />
-        <Route path='/' element={
+        <Route path='/' element={<SignIn />} />
+        <Route path='/Home' element={
           <div className={AppStyle.AppContainer}>
             <div className={AppStyle.Input}>
               <Input
@@ -23,7 +40,7 @@ function App() {
             </div>
             <div className={AppStyle.Task}>
               {
-                val.Tasks.map((items: any) => {
+                newList().map((items: any) => {
                   return (
                     <Task
                       key={items.id}

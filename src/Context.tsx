@@ -1,7 +1,12 @@
 import React from 'react'
 import { app } from "../src/Firebase/Firebase"
+import { useNavigate } from "react-router-dom"
 import { createContext, useState } from 'react'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth } from "firebase/auth";
+import { 
+    createUserWithEmailAndPassword, 
+    signInWithEmailAndPassword, 
+    getAuth 
+    } from "firebase/auth";
 
 interface Props {
     children: React.ReactNode
@@ -21,9 +26,11 @@ export const InputContex: React.Context<any> = createContext({})
 
 export const InputProvider = ({ children }: Props) => {
     const auth = getAuth(app);
+    const Navigate = useNavigate()
     const [input, setInputs] = useState<any>("")
     const [Tasks, setTasks] = useState<any[]>([])
-    const [deleted, setDelete] = useState<[]>()
+    const [deleted, setDelete] = useState<string>("")
+    const [User,setUser] = useState<{}>()
     const [handleForm, setHandleForm] = useState<handleForm>({
         Name: "",
         Password: ""
@@ -34,15 +41,16 @@ export const InputProvider = ({ children }: Props) => {
     const HandleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         createUserWithEmailAndPassword(auth, handleForm.Name, handleForm.Password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
+            .then(async (userCredential) => {
+                // Signed in user 
+                const user = await userCredential.user;
+                Navigate("/Home")
                 console.log(user)
-                // ...
+                setUser(user)
             })
-            .catch((error: any) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
+            .catch(async (error: any) => {
+                const errorCode = await error.code;
+                const errorMessage = await error.message;
                 console.log(errorCode, errorMessage)
                 // ..
             });
@@ -50,6 +58,7 @@ export const InputProvider = ({ children }: Props) => {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
+                
                 // ...
             })
             .catch((error) => {
@@ -58,19 +67,23 @@ export const InputProvider = ({ children }: Props) => {
             });
     }
     // --->Handles localStorage without Firebase
+    
     // useEffect(() => {
     //     localStorage.setItem("items", JSON.stringify(Tasks))
     // }, [Tasks])
+    
     return (
         <InputContex.Provider value={
             {
+                User,
                 input,
-                setInputs,
                 Tasks,
+                deleted,
                 setTasks,
                 setDelete,
-                handleChange,
+                setInputs,
                 handleForm,
+                handleChange,
                 HandleSubmit,
                 setHandleForm
             }

@@ -1,27 +1,25 @@
-import React, { useContext, useState, useRef } from 'react';
-import { InputContex } from '../../Context';
+import React, { useState,useContext } from 'react';
+import {InputContex} from "../../Context"
 import TaskStyle from "./Task.module.css"
+
 interface Props {
   items: any,
   setRemove?: React.Dispatch<React.SetStateAction<any[]>>
   filter?: () => {}
 }
+
 export const Task = ({ items }: Props) => {
-  const inputsetState = useContext(InputContex)
-  const { setDelete } = inputsetState
-  const [checked, setChecked] = useState(false)
-  const [update, setUpdate] = useState(false)
-  const [edit, setEdit] = useState(`${items.input}`)
-  const setToDelete = () => {
-    setDelete(items.id)
-  }
+  const {setDelete} = useContext(InputContex)
+  const [checked, setChecked] = useState<boolean>(false)
+  const [update, setUpdate] = useState<boolean>(false)
+  const [edit, setEdit] = useState<string>(`${items.input}`)
   const handleEdit = (event: React.FormEvent<HTMLInputElement>): void => {
     setEdit(event.currentTarget.value)
   }
   return (
     <div className={TaskStyle.TaskContianer}>
       <div className={TaskStyle.Value}>
-        {checked ? <s>{edit}</s> : edit}
+        {checked ? <s> {edit} </s> : edit}
         {
           update &&
           <div className="ModalClass">
@@ -38,7 +36,9 @@ export const Task = ({ items }: Props) => {
           />
         </div>
         <div className={TaskStyle.Delete}>
-          <button onClick={setToDelete}>
+          <button onClick={() => {
+            setDelete(items.id)
+          }}>
             Delete
           </button>
         </div>
