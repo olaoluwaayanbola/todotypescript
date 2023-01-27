@@ -29,6 +29,7 @@ export const InputProvider = ({ children }: Props) => {
     const Navigate = useNavigate()
     const [input, setInputs] = useState<any>("")
     const [Tasks, setTasks] = useState<any[]>([])
+    const [deleted, setDelete] = useState<string>("")
     const [User,setUser] = useState<{}>()
     const [handleForm, setHandleForm] = useState<handleForm>({
         Name: "",
@@ -77,7 +78,9 @@ export const InputProvider = ({ children }: Props) => {
                 User,
                 input,
                 Tasks,
+                deleted,
                 setTasks,
+                setDelete,
                 setInputs,
                 handleForm,
                 handleChange,
