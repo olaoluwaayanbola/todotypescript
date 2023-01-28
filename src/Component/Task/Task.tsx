@@ -13,9 +13,11 @@ export const Task = ({ items }: Props) => {
   const [checked, setChecked] = useState<boolean>(false)
   const [update, setUpdate] = useState<boolean>(false)
   const [edit, setEdit] = useState<string>(`${items.input}`)
+  
   const handleEdit = (event: React.FormEvent<HTMLInputElement>): void => {
     setEdit(event.currentTarget.value)
   }
+  
   return (
     <div className={TaskStyle.TaskContianer}>
       <div className={TaskStyle.Value}>
