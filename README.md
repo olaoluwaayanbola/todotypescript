@@ -11,7 +11,7 @@
   <li>Clear all completed items</li>
 </ul>
 
-### Getting Started
+##Getting Started
 
 Clone the repository
 ---------------------
