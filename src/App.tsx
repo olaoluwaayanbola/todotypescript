@@ -10,15 +10,7 @@ function App() {
   const val = useContext(InputContex)
   
   // Delete functionality logic
-  const newList = () => {
-    for(let i = 0;i < val.Tasks.length;i++){
-      if(val.Tasks[i].id === val.deleted){
-          val.Tasks.splice(i,1)
-      }
-    }
-  }
-  
-  newList()
+  val.newList()
   
   return (
     <div className={AppStyle.App}>
