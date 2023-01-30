@@ -38,7 +38,13 @@ export const InputProvider = ({ children }: Props) => {
         Name: "",
         Password: ""
     })
-    
+    const newList = () => {
+        for(let i = 0;i < Tasks.length;i++){
+        if(Tasks[i].id === deleted){
+            Tasks.splice(i,1)
+        }
+    }
+  }
     const handleChange = (event: React.FormEvent<HTMLInputElement>): void => {
         setInputs(event.currentTarget.value)
     }
@@ -84,6 +90,7 @@ export const InputProvider = ({ children }: Props) => {
                 input,
                 Tasks,
                 deleted,
+                newList,
                 setTasks,
                 setDelete,
                 setInputs,
