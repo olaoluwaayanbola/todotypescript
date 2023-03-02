@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext,useEffect } from 'react';
 import AppStyle from './App.module.css';
 import { InputContex } from './Context';
 import { Task } from './Component/Task/Task';
@@ -9,9 +9,11 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   const val = useContext(InputContex)
   
-  // Delete functionality logic
-  val.newList()
-  
+  // Delete functionality logic call
+  useEffect(()=>{
+    val.newList()
+  },[])
+
   return (
     <div className={AppStyle.App}>
       <Routes>
